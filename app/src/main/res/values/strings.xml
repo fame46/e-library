@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">E-Library</string>
+    <string name="navigation_drawer_open">Open Navigation Drawer</string>
+    <string name="navigation_drawer_close">Close Navigation Drawer</string>
+    <string name="toolbar_title">E-Library</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="toast_pick_file_error">Unable to pick file. Check status of file manager.</string>
+    <string name="about">e-library PKTJ adalah Aplikasi berbasis android yg befungsi untuk membaca buku secara digital melalui perangkat mobile dan berisi koleksi digital.</string>
+    <string name="about2">Seluruh koleksi buku adalah legal dengan lisensi terbuka oleh Penulis / Penerbit. Cakupan buku elektronik adalah dokumen tertulis (buku, diktat, catatan, dll) terkait kajian ilmiah atau pembelajaran di berbagai bidang ilmu. Koleksi buku diambil dari berbagai macam sumber yang bersifat lisensi terbuka.</string>
+</resources>

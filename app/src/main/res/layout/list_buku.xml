@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="10sp">
+
+    <ImageView
+        android:id="@+id/imageViewSampul"
+        android:background="@drawable/logoelibrary"
+        android:layout_width="80sp"
+        android:layout_height="90sp"/>
+
+    <TextView
+        android:id="@+id/tvJudul"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/imageViewSampul"
+        android:layout_marginLeft="10sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="Judul"
+        android:textSize="16sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/tvDeskripsi"
+        android:layout_alignParentRight="true"
+        android:layout_toRightOf="@id/imageViewSampul"
+        android:layout_marginLeft="10sp"
+        android:layout_below="@id/tvJudul"
+        android:text="Deskripsi"
+        android:textSize="12dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/imageViewViewPdf"
+        android:background="@drawable/ic_baseline_arrow_forward_24"
+        android:layout_below="@id/tvDeskripsi"
+        android:layout_marginTop="10sp"
+        android:layout_alignParentRight="true"
+        android:layout_width="35sp"
+        android:layout_height="35sp"/>
+
+    <ImageView
+        android:id="@+id/imageViewBookmark"
+        android:background="@drawable/ic_baseline_bookmark_border_24"
+        android:layout_below="@id/tvDeskripsi"
+        android:layout_marginTop="10sp"
+        android:layout_marginRight="10sp"
+        android:layout_toLeftOf="@id/imageViewViewPdf"
+        android:layout_width="35sp"
+        android:layout_height="35sp"/>
+
+    <ImageView
+        android:id="@+id/imageViewFovorit"
+        android:background="@drawable/ic_baseline_favorite_border_24"
+        android:layout_below="@id/tvDeskripsi"
+        android:layout_marginTop="10sp"
+        android:layout_toLeftOf="@id/imageViewBookmark"
+        android:layout_marginRight="10sp"
+        android:layout_width="35sp"
+        android:layout_height="35sp"/>
+
+</RelativeLayout>
