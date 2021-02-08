@@ -27,17 +27,17 @@ public class AboutFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_about, container, false);
 
-        tvLink = v.findViewById(R.id.link);
+//        tvLink = v.findViewById(R.id.link);
 
-        tvLink.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://library.pktj.ac.id/"));
-                startActivity(browserIntent);
-            }
-        });
+//        tvLink.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://library.pktj.ac.id/"));
+//                startActivity(browserIntent);
+//            }
+//        });
 
-        MobileAds.initialize(getContext(), "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(getContext(), "ca-app-pub-2707736392233075/5248913902");
         adView = (AdView)v.findViewById(R.id.adView);
         AdRequest request = new AdRequest.Builder().build();
         adView.loadAd(request);

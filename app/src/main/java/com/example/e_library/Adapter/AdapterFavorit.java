@@ -61,19 +61,19 @@ public class AdapterFavorit extends RecyclerView.Adapter<AdapterFavorit.FavoritV
         holder.btnFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                favoritListener.favoritId(String.valueOf(modelFavoritList.get(position).getId()), modelFavoritList.get(position).getCover(), modelFavoritList.get(position).getContent(),modelFavoritList.get(position).getJudul(),modelFavoritList.get(position).getDeskripsi());
+                favoritListener.favoritId(String.valueOf(modelFavoritList.get(position).getId()), modelFavoritList.get(position).getCover(), modelFavoritList.get(position).getContent(),modelFavoritList.get(position).getJudul(),modelFavoritList.get(position).getDeskripsi(), String.valueOf(modelFavoritList.get(position).getTahun()), modelFavoritList.get(position).getPengarang(),modelFavoritList.get(position).getPenerbit());
             }
         });
         holder.btnBM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bookmarksListener.bookmarksId(String.valueOf(modelFavoritList.get(position).getId()), modelFavoritList.get(position).getCover(), modelFavoritList.get(position).getContent(),modelFavoritList.get(position).getJudul(),modelFavoritList.get(position).getDeskripsi());
+                bookmarksListener.bookmarksId(String.valueOf(modelFavoritList.get(position).getId()), modelFavoritList.get(position).getCover(), modelFavoritList.get(position).getContent(),modelFavoritList.get(position).getJudul(),modelFavoritList.get(position).getDeskripsi(), String.valueOf(modelFavoritList.get(position).getTahun()), modelFavoritList.get(position).getPengarang(),modelFavoritList.get(position).getPenerbit());
             }
         });
         holder.btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewPdfListener.pdfId(modelFavoritList.get(position).getContent());
+                viewPdfListener.pdfId(String.valueOf(modelFavoritList.get(position).getId()), modelFavoritList.get(position).getCover(), modelFavoritList.get(position).getContent(),modelFavoritList.get(position).getJudul(),modelFavoritList.get(position).getDeskripsi(), String.valueOf(modelFavoritList.get(position).getTahun()), modelFavoritList.get(position).getPengarang(),modelFavoritList.get(position).getPenerbit());
             }
         });
     }
@@ -100,14 +100,14 @@ public class AdapterFavorit extends RecyclerView.Adapter<AdapterFavorit.FavoritV
     }
 
     public interface FavoritListener{
-        public void favoritId(String id, String cover, String content, String judul, String deskripsi);
+        public void favoritId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit);
     }
 
     public interface BookmarksListener{
-        public void bookmarksId(String id, String cover, String content, String judul, String deskripsi);
+        public void bookmarksId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit);
     }
 
     public interface ViewPdfListener{
-        public void pdfId(String content);
+        public void pdfId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit);
     }
 }

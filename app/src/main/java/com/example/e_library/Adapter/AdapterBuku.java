@@ -65,19 +65,19 @@ public class AdapterBuku extends RecyclerView.Adapter<AdapterBuku.BukuVierwHolde
         holder.btnFav.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                favoritListener.favoritId(String.valueOf(modelBukuList.get(position).getId()), modelBukuList.get(position).getCover(), modelBukuList.get(position).getContent(),modelBukuList.get(position).getJudul(),modelBukuList.get(position).getDeskripsi());
+                favoritListener.favoritId(String.valueOf(modelBukuList.get(position).getId()), modelBukuList.get(position).getCover(), modelBukuList.get(position).getContent(),modelBukuList.get(position).getJudul(),modelBukuList.get(position).getDeskripsi(), String.valueOf(modelBukuList.get(position).getTahun()), modelBukuList.get(position).getPengarang(),modelBukuList.get(position).getPenerbit());
             }
         });
         holder.btnBM.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bookmarksListener.bookmarksId(String.valueOf(modelBukuList.get(position).getId()), modelBukuList.get(position).getCover(), modelBukuList.get(position).getContent(),modelBukuList.get(position).getJudul(),modelBukuList.get(position).getDeskripsi());
+                bookmarksListener.bookmarksId(String.valueOf(modelBukuList.get(position).getId()), modelBukuList.get(position).getCover(), modelBukuList.get(position).getContent(),modelBukuList.get(position).getJudul(),modelBukuList.get(position).getDeskripsi(), String.valueOf(modelBukuList.get(position).getTahun()), modelBukuList.get(position).getPengarang(),modelBukuList.get(position).getPenerbit());
             }
         });
         holder.btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                viewPdfListener.pdfId(modelBukuList.get(position).getContent());
+                viewPdfListener.pdfId(String.valueOf(modelBukuList.get(position).getId()), modelBukuList.get(position).getCover(), modelBukuList.get(position).getContent(),modelBukuList.get(position).getJudul(),modelBukuList.get(position).getDeskripsi(), String.valueOf(modelBukuList.get(position).getTahun()), modelBukuList.get(position).getPengarang(),modelBukuList.get(position).getPenerbit());
             }
         });
     }
@@ -103,14 +103,14 @@ public class AdapterBuku extends RecyclerView.Adapter<AdapterBuku.BukuVierwHolde
     }
 
     public interface FavoritListener{
-        public void favoritId(String id, String cover, String content, String judul, String deskripsi);
+        public void favoritId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit);
     }
 
     public interface BookmarksListener{
-        public void bookmarksId(String id, String cover, String content, String judul, String deskripsi);
+        public void bookmarksId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit);
     }
 
     public interface ViewPdfListener{
-        public void pdfId(String content);
+        public void pdfId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit);
     }
 }

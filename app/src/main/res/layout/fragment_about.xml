@@ -33,14 +33,14 @@
                 android:textSize="14sp"
                 android:text="@string/about2" />
 
-            <com.codesgood.views.JustifiedTextView
-                android:id="@+id/link"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12sp"
-                android:textSize="14sp"
-                android:textColor="@color/purple_500"
-                android:text="https://library.pktj.ac.id/" />
+<!--            <com.codesgood.views.JustifiedTextView-->
+<!--                android:id="@+id/link"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="12sp"-->
+<!--                android:textSize="14sp"-->
+<!--                android:textColor="@color/purple_500"-->
+<!--                android:text="https://library.pktj.ac.id/" />-->
 
         </LinearLayout>
     </ScrollView>

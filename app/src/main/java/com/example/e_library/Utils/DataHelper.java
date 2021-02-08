@@ -24,13 +24,13 @@ public class DataHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        String sql = "create table favorit(id integer primary key, cover text null, content text null, judul text null, deskripsi text null);";
+        String sql = "create table favorit(id integer primary key, cover text null, content text null, judul text null, deskripsi text null, tahun integer, pengarang text null, penerbit text null);";
         Log.d("Data", "onCreate: " + sql);
         sqLiteDatabase.execSQL(sql);
 //        sql = "INSERT INTO favorit (id, cover, content, judul, deskripsi) VALUES ('1', 'Darsiwan', '1996-07-12', 'Laki-laki','Indramayu');";
 //        sqLiteDatabase.execSQL(sql);
 
-        String sql2 = "create table bookmarks(id integer primary key, cover text null, content text null, judul text null, deskripsi text null);";
+        String sql2 = "create table bookmarks(id integer primary key, cover text null, content text null, judul text null, deskripsi text null, tahun integer, pengarang text null, penerbit text null);";
         Log.d("Data", "onCreate: " + sql2);
         sqLiteDatabase.execSQL(sql2);
 //        sql = "INSERT INTO bookmarks (id, cover, content, judul, deskripsi) VALUES ('1', 'Darsiwan', '1996-07-12', 'Laki-laki','Indramayu');";
@@ -55,6 +55,9 @@ public class DataHelper extends SQLiteOpenHelper {
                 modelFavorit.setContent(cursor.getString(2));
                 modelFavorit.setJudul(cursor.getString(3));
                 modelFavorit.setDeskripsi(cursor.getString(4));
+                modelFavorit.setTahun(cursor.getInt(5));
+                modelFavorit.setPengarang(cursor.getString(6));
+                modelFavorit.setPenerbit(cursor.getString(7));
                 modelFavoritList.add(modelFavorit);
             } while (cursor.moveToNext());
         }
@@ -77,6 +80,9 @@ public class DataHelper extends SQLiteOpenHelper {
                 modelFavorit.setContent(cursor.getString(2));
                 modelFavorit.setJudul(cursor.getString(3));
                 modelFavorit.setDeskripsi(cursor.getString(4));
+                modelFavorit.setTahun(cursor.getInt(5));
+                modelFavorit.setPengarang(cursor.getString(6));
+                modelFavorit.setPenerbit(cursor.getString(7));
                 modelFavoritList.add(modelFavorit);
             } while (cursor.moveToNext());
         }
@@ -116,6 +122,9 @@ public class DataHelper extends SQLiteOpenHelper {
                 modelBokkmark.setContent(cursor.getString(2));
                 modelBokkmark.setJudul(cursor.getString(3));
                 modelBokkmark.setDeskripsi(cursor.getString(4));
+                modelBokkmark.setTahun(cursor.getInt(5));
+                modelBokkmark.setPengarang(cursor.getString(6));
+                modelBokkmark.setPenerbit(cursor.getString(7));
                 modelBokkmarkList.add(modelBokkmark);
             } while (cursor.moveToNext());
         }
@@ -155,6 +164,9 @@ public class DataHelper extends SQLiteOpenHelper {
                 modelBokkmark.setContent(cursor.getString(2));
                 modelBokkmark.setJudul(cursor.getString(3));
                 modelBokkmark.setDeskripsi(cursor.getString(4));
+                modelBokkmark.setTahun(cursor.getInt(5));
+                modelBokkmark.setPengarang(cursor.getString(6));
+                modelBokkmark.setPenerbit(cursor.getString(7));
                 modelBokkmarkList.add(modelBokkmark);
             } while (cursor.moveToNext());
         }

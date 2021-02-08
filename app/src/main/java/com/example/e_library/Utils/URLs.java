@@ -9,5 +9,7 @@ public class URLs {
     //buku
     public static final String BUKU = URL+"/read_buku.php";
     public static final String CARIBUKU = URL+"/cari_buku.php";
+    public static final String CARIBUKUKATEGORI = URL+"/cari_buku_bykategori.php";
+    public static final String BUKUKATEGORI = URL+"/read_buku_bykategori.php";
 
 }

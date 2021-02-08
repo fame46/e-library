@@ -85,11 +85,18 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                         .commit();
                 closeDrawer();
                 break;
-            case R.id.nav_about:
+            case R.id.nav_information:
                 getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_id, new AboutFragment())
                         .commit();
 //                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://library.pktj.ac.id/"));
 //                startActivity(browserIntent);
+                closeDrawer();
+                break;
+            case R.id.nav_about:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.framelayout_id, new AboutFragment())
+//                        .commit();
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://library.pktj.ac.id/"));
+                startActivity(browserIntent);
                 closeDrawer();
                 break;
             case R.id.nav_exit:

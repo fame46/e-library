@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import com.example.e_library.Adapter.AdapterBuku;
 import com.example.e_library.Adapter.AdapterFavorit;
+import com.example.e_library.DetailBukuActivity;
 import com.example.e_library.Model.ModelBuku;
 import com.example.e_library.Model.ModelFavorit;
 import com.example.e_library.PdfViewActivity;
@@ -72,7 +73,7 @@ public class FavoritFragment extends Fragment implements AdapterFavorit.FavoritL
 
         getData();
 
-        MobileAds.initialize(getContext(), "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(getContext(), "ca-app-pub-2707736392233075/5248913902");
         adView = (AdView)v.findViewById(R.id.adView);
         AdRequest request = new AdRequest.Builder().build();
         adView.loadAd(request);
@@ -152,7 +153,21 @@ public class FavoritFragment extends Fragment implements AdapterFavorit.FavoritL
     }
 
     @Override
-    public void favoritId(String id, String cover, String content, String judul, String deskripsi) {
+    public void pdfId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit) {
+        Intent intent = new Intent(getContext(), DetailBukuActivity.class);
+        intent.putExtra("id", id);
+        intent.putExtra("cover", cover);
+        intent.putExtra("content", content);
+        intent.putExtra("judul", judul);
+        intent.putExtra("deskripsi", deskripsi);
+        intent.putExtra("tahun", tahun);
+        intent.putExtra("pengarang", pengarang);
+        intent.putExtra("penerbit", penerbit);
+        startActivity(intent);
+    }
+
+    @Override
+    public void favoritId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit) {
         dbcenter = new DataHelper(getContext());
         if(dbcenter.getIdCount(id) > 0){
             dbcenter.hapusDataFavorit(id);
@@ -160,41 +175,40 @@ public class FavoritFragment extends Fragment implements AdapterFavorit.FavoritL
             Toast.makeText(getContext(), "dihapus dari favorit", Toast.LENGTH_LONG).show();
         }else {
             SQLiteDatabase db = dbcenter.getWritableDatabase();
-            db.execSQL("insert into favorit(id, cover, content, judul, deskripsi) values('" +
+            db.execSQL("insert into favorit(id, cover, content, judul, deskripsi, tahun, pengarang, penerbit) values('" +
                     id + "','" +
                     cover + "','" +
                     content + "','" +
                     judul + "','" +
-                    deskripsi + "')");
+                    deskripsi + "','" +
+                    tahun + "','" +
+                    pengarang + "','" +
+                    penerbit + "')");
             getData();
             Toast.makeText(getContext(), "Ditambahkan ke favorit", Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
-    public void bookmarksId(String id, String cover, String content, String judul, String deskripsi) {
+    public void bookmarksId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit) {
         dbcenter = new DataHelper(getContext());
-        if(dbcenter.getIdCount(id) > 0){
+        if(dbcenter.getIdCountBookmark(id) > 0){
             dbcenter.hapusDataBookmark(id);
             getData();
             Toast.makeText(getContext(), "dihapus dari bookmark", Toast.LENGTH_LONG).show();
         }else {
             SQLiteDatabase db = dbcenter.getWritableDatabase();
-            db.execSQL("insert into bookmarks(id, cover, content, judul, deskripsi) values('" +
+            db.execSQL("insert into bookmarks(id, cover, content, judul, deskripsi, tahun, pengarang, penerbit) values('" +
                     id + "','" +
                     cover + "','" +
                     content + "','" +
                     judul + "','" +
-                    deskripsi + "')");
+                    deskripsi + "','" +
+                    tahun + "','" +
+                    pengarang + "','" +
+                    penerbit + "')");
             getData();
             Toast.makeText(getContext(), "Ditambahkan ke bookmarks", Toast.LENGTH_LONG).show();
         }
-    }
-
-    @Override
-    public void pdfId(String content) {
-        Intent intent = new Intent(getContext(), PdfViewActivity.class);
-        intent.putExtra("content", content);
-        startActivity(intent);
     }
 }

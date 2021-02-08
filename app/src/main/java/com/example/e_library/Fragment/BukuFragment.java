@@ -32,6 +32,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.e_library.Adapter.AdapterBuku;
 import com.example.e_library.Adapter.AdapterKategori;
+import com.example.e_library.DetailBukuActivity;
 import com.example.e_library.Model.ModelBuku;
 import com.example.e_library.Model.ModelFavorit;
 import com.example.e_library.Model.ModelKategori;
@@ -89,7 +90,7 @@ public class BukuFragment extends Fragment implements AdapterBuku.FavoritListene
 
         loadPengadaanData();
 
-        MobileAds.initialize(getContext(), "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(getContext(), "ca-app-pub-2707736392233075/5248913902");
         adView = (AdView)v.findViewById(R.id.adView);
         AdRequest request = new AdRequest.Builder().build();
         adView.loadAd(request);
@@ -228,13 +229,13 @@ public class BukuFragment extends Fragment implements AdapterBuku.FavoritListene
                                 loading.setVisibility(View.GONE);
                             } catch (JSONException e) {
                                 e.printStackTrace();
-//                                loading.setVisibility(View.GONE);
+                                loading.setVisibility(View.GONE);
                             }
                         }
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-//                    loading.setVisibility(View.GONE);
+                    loading.setVisibility(View.GONE);
                 }
                 adapter.notifyDataSetChanged();
             }
@@ -250,7 +251,21 @@ public class BukuFragment extends Fragment implements AdapterBuku.FavoritListene
     }
 
     @Override
-    public void favoritId(String id, String cover, String content, String judul, String deskripsi) {
+    public void pdfId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit) {
+        Intent intent = new Intent(getContext(), DetailBukuActivity.class);
+        intent.putExtra("id", id);
+        intent.putExtra("cover", cover);
+        intent.putExtra("content", content);
+        intent.putExtra("judul", judul);
+        intent.putExtra("deskripsi", deskripsi);
+        intent.putExtra("tahun", tahun);
+        intent.putExtra("pengarang", pengarang);
+        intent.putExtra("penerbit", penerbit);
+        startActivity(intent);
+    }
+
+    @Override
+    public void favoritId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit) {
         dbHelper = new DataHelper(getContext());
         if(dbHelper.getIdCount(id) > 0){
             dbHelper.hapusDataFavorit(id);
@@ -258,19 +273,22 @@ public class BukuFragment extends Fragment implements AdapterBuku.FavoritListene
             Toast.makeText(getContext(), "dihapus dari favorit", Toast.LENGTH_LONG).show();
         }else {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
-            db.execSQL("insert into favorit(id, cover, content, judul, deskripsi) values('" +
+            db.execSQL("insert into favorit(id, cover, content, judul, deskripsi, tahun, pengarang, penerbit) values('" +
                     id + "','" +
                     cover + "','" +
                     content + "','" +
                     judul + "','" +
-                    deskripsi + "')");
+                    deskripsi + "','" +
+                    tahun + "','" +
+                    pengarang + "','" +
+                    penerbit + "')");
             loadPengadaanData();
             Toast.makeText(getContext(), "Ditambahkan ke favorit", Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
-    public void bookmarksId(String id, String cover, String content, String judul, String deskripsi) {
+    public void bookmarksId(String id, String cover, String content, String judul, String deskripsi, String tahun, String pengarang, String penerbit) {
         dbHelper = new DataHelper(getContext());
         if(dbHelper.getIdCountBookmark(id) > 0){
             dbHelper.hapusDataBookmark(id);
@@ -278,28 +296,17 @@ public class BukuFragment extends Fragment implements AdapterBuku.FavoritListene
             Toast.makeText(getContext(), "dihapus dari bookmark", Toast.LENGTH_LONG).show();
         }else {
             SQLiteDatabase db = dbHelper.getWritableDatabase();
-            db.execSQL("insert into bookmarks(id, cover, content, judul, deskripsi) values('" +
+            db.execSQL("insert into bookmarks(id, cover, content, judul, deskripsi, tahun, pengarang, penerbit) values('" +
                     id + "','" +
                     cover + "','" +
                     content + "','" +
                     judul + "','" +
-                    deskripsi + "')");
+                    deskripsi + "','" +
+                    tahun + "','" +
+                    pengarang + "','" +
+                    penerbit + "')");
             loadPengadaanData();
             Toast.makeText(getContext(), "Ditambahkan ke bookmarks", Toast.LENGTH_LONG).show();
         }
-
-//        Toast.makeText(getContext(), "bookmarks\nid : "+id+
-//                "\ncover : "+cover+
-//                "\ncontent : "+content+
-//                "\njudul : "+judul+
-//                "deskripsi : "+deskripsi, Toast.LENGTH_SHORT).show();
     }
-
-    @Override
-    public void pdfId(String content) {
-        Intent intent = new Intent(getContext(), PdfViewActivity.class);
-        intent.putExtra("content", content);
-        startActivity(intent);
-    }
-
 }

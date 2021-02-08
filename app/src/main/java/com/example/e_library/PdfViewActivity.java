@@ -1,9 +1,13 @@
 package com.example.e_library;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.github.barteksc.pdfviewer.PDFView;
 
@@ -18,15 +22,40 @@ import javax.net.ssl.HttpsURLConnection;
 public class PdfViewActivity extends AppCompatActivity {
 
     PDFView pdfView;
+    ImageView back;
+    TextView tvJudul;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pdf_view);
 
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+
+        tvJudul = findViewById(R.id.tvJudul);
+        back = findViewById(R.id.backChoiceReceive);
         pdfView = findViewById(R.id.pdfView);
         String pdfurl = getIntent().getStringExtra("content");
         new RetrivePDFfromUrl().execute(pdfurl);
+
+        tvJudul.setText(getIntent().getStringExtra("judul"));
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
     class RetrivePDFfromUrl extends AsyncTask<String, Void, InputStream> {

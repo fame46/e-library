@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ELibrary"
         android:usesCleartextTraffic="true">
-        <activity android:name=".PdfViewActivity"></activity>
+        <activity android:name=".DetailBukuActivity"></activity>
+        <activity android:name=".BukuKategoriActivity" />
+        <activity android:name=".PdfViewActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
