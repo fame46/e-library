@@ -83,7 +83,7 @@ public class BukuKategoriActivity extends AppCompatActivity implements AdapterBu
 
         loadPengadaanData();
 
-        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-2707736392233075/5248913902");
         adView = (AdView)findViewById(R.id.adView);
         AdRequest request = new AdRequest.Builder().build();
         adView.loadAd(request);

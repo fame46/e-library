@@ -1,6 +1,7 @@
 package com.example.e_library.Adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,7 +57,7 @@ public class AdapterBookmark extends RecyclerView.Adapter<AdapterBookmark.Bookma
         holder.btnBM.setImageResource(R.drawable.ic_baseline_bookmark_24);
 
         holder.tvJudul.setText(modelBokkmarkList.get(position).getJudul());
-        holder.tvDeskripsi.setText(modelBokkmarkList.get(position).getDeskripsi());
+        holder.tvDeskripsi.setText(Html.fromHtml(modelBokkmarkList.get(position).getDeskripsi()).toString());
         Glide.with(context).load(modelBokkmarkList.get(position).getCover()).into(holder.imgCover);
         holder.btnFav.setOnClickListener(new View.OnClickListener() {
             @Override

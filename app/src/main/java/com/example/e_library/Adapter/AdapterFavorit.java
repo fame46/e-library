@@ -1,6 +1,7 @@
 package com.example.e_library.Adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,7 @@ public class AdapterFavorit extends RecyclerView.Adapter<AdapterFavorit.FavoritV
         dbHelper = new DataHelper(context);
 
         holder.tvJudul.setText(modelFavoritList.get(position).getJudul());
-        holder.tvDeskripsi.setText(modelFavoritList.get(position).getDeskripsi());
+        holder.tvDeskripsi.setText(Html.fromHtml(modelFavoritList.get(position).getDeskripsi()).toString());
         Glide.with(context).load(modelFavoritList.get(position).getCover()).into(holder.imgCover);
 
         holder.btnFav.setImageResource(R.drawable.ic_baseline_favorite_24);

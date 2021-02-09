@@ -1,6 +1,7 @@
 package com.example.e_library.Adapter;
 
 import android.content.Context;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,7 @@ public class AdapterBuku extends RecyclerView.Adapter<AdapterBuku.BukuVierwHolde
         }
 
         holder.tvJudul.setText(modelBukuList.get(position).getJudul());
-        holder.tvDeskripsi.setText(modelBukuList.get(position).getDeskripsi());
+        holder.tvDeskripsi.setText(Html.fromHtml(modelBukuList.get(position).getDeskripsi()).toString());
         Glide.with(context).load(modelBukuList.get(position).getCover()).into(holder.imgCover);
         holder.btnFav.setOnClickListener(new View.OnClickListener() {
             @Override

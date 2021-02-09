@@ -12,10 +12,47 @@
         android:layout_height="match_parent"
         android:background="@color/white">
 
+        <LinearLayout
+            android:id="@+id/headr"
+            android:padding="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="56sp"
+            android:gravity="center_vertical"
+            android:background="@color/dua"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/dua"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+                <ImageView
+                    android:id="@+id/backChoiceReceive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:background="@drawable/ic_baseline_arrow_back_24"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Detail Buku"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="16sp"
+                    android:textColor="#fff"/>
+            </androidx.appcompat.widget.Toolbar>
+
+        </LinearLayout>
+
         <ImageView
             android:id="@+id/imageViewSampul"
             android:src="@drawable/logoelibrary"
             android:scaleType="fitXY"
+            android:layout_below="@id/headr"
             android:layout_width="match_parent"
             android:layout_height="300sp"/>
 

@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide;
 
 public class DetailBukuActivity extends AppCompatActivity {
 
-    ImageView imageView;
+    ImageView imageView, back;
     TextView tvJudul, tvTahun, tvDeskripsi, tvPengarang,tvPenerbit;
     Button btnbca;
 
@@ -22,6 +22,7 @@ public class DetailBukuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_buku);
 
+        back = findViewById(R.id.backChoiceReceive);
         imageView = findViewById(R.id.imageViewSampul);
         tvJudul = findViewById(R.id.tvJudul);
         tvTahun = findViewById(R.id.tvTahun);
@@ -44,6 +45,13 @@ public class DetailBukuActivity extends AppCompatActivity {
                 intent.putExtra("content", getIntent().getStringExtra("content"));
                 intent.putExtra("judul", getIntent().getStringExtra("judul"));
                 startActivity(intent);
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
     }
