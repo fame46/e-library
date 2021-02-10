@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -34,9 +35,10 @@ public class DetailBukuActivity extends AppCompatActivity {
         Glide.with(getApplicationContext()).load(getIntent().getStringExtra("cover")).into(imageView);
         tvJudul.setText(getIntent().getStringExtra("judul"));
         tvTahun.setText(getIntent().getStringExtra("tahun"));
-        tvDeskripsi.setText(getIntent().getStringExtra("deskripsi"));
+        tvDeskripsi.setText(Html.fromHtml(getIntent().getStringExtra("deskripsi")));
         tvPengarang.setText(getIntent().getStringExtra("pengarang"));
         tvPenerbit.setText(getIntent().getStringExtra("penerbit"));
+
 
         btnbca.setOnClickListener(new View.OnClickListener() {
             @Override
